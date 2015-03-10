@@ -58,7 +58,7 @@ public class SWTBrowser {
 		menuButtonNuevaPestaña.setText("&Nueva Pestaña\t CTRL+T");
 		menuButtonNuevaPestaña.setAccelerator(SWT.CTRL + 'T');
 		Image nuevaPestaña = new Image(display,
-				SWTBrowser.class.getResourceAsStream("addition6.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/addition6.png"));
 		menuButtonNuevaPestaña.setImage(nuevaPestaña);
 
 		// Separador
@@ -68,9 +68,8 @@ public class SWTBrowser {
 		menuButtonNuevo = new MenuItem(menuMenuArchivo, SWT.PUSH);
 		menuButtonNuevo.setText("&Nuevo\t CTRL+N");
 		menuButtonNuevo.setAccelerator(SWT.CTRL + 'N');
-		Image nuevo = new Image(display, 
-			    SWTBrowser.class.getResourceAsStream(
-					      "text70.png"));
+		Image nuevo = new Image(display,
+				SWTBrowser.class.getResourceAsStream("iconos/text70.png"));
 		menuButtonNuevo.setImage(nuevo);
 
 		// Creación de un Item del Menú, Abrir
@@ -78,7 +77,7 @@ public class SWTBrowser {
 		menuButtonAbrir.setText("&Abrir\t CTRL+O");
 		menuButtonAbrir.setAccelerator(SWT.CTRL + 'O');
 		Image abrir = new Image(display,
-				SWTBrowser.class.getResourceAsStream("open131.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/open131.png"));
 		menuButtonAbrir.setImage(abrir);
 
 		// Separador
@@ -90,7 +89,7 @@ public class SWTBrowser {
 		menuButtonNuevaMatriz.setText("&Nueva Matriz\t CTRL+M");
 		menuButtonNuevaMatriz.setAccelerator(SWT.CTRL + 'M');
 		Image nuevaMatriz = new Image(display,
-				SWTBrowser.class.getResourceAsStream("folder228.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/folder228.png"));
 		menuButtonNuevaMatriz.setImage(nuevaMatriz);
 
 		// Creación de un Item del Menú, Abrir Matriz
@@ -98,7 +97,7 @@ public class SWTBrowser {
 		menuButtonAbrirMatriz.setText("&Abrir Matriz\t CTRL+A");
 		menuButtonAbrirMatriz.setAccelerator(SWT.CTRL + 'A');
 		Image abrirMatriz = new Image(display,
-				SWTBrowser.class.getResourceAsStream("folder243.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/folder243.png"));
 		menuButtonAbrirMatriz.setImage(abrirMatriz);
 
 		// Creación de un Item del Menú, Guardar Matriz
@@ -106,9 +105,8 @@ public class SWTBrowser {
 		menuButtonGuardarMatriz.setText("&Guardar Matriz\t CTRL+G");
 		menuButtonGuardarMatriz.setAccelerator(SWT.CTRL + 'G');
 		Image guardarMatriz = new Image(display,
-				SWTBrowser.class.getResourceAsStream("save23.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/save23.png"));
 		menuButtonGuardarMatriz.setImage(guardarMatriz);
-
 		// Separador
 		new MenuItem(menuMenuArchivo, SWT.SEPARATOR);
 
@@ -117,7 +115,7 @@ public class SWTBrowser {
 		menuButtonSalir.setText("&Salir\t CTRL+Q");
 		menuButtonSalir.setAccelerator(SWT.CTRL + 'Q');
 		Image salir = new Image(display,
-				SWTBrowser.class.getResourceAsStream("door13.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/door13.png"));
 		menuButtonSalir.setImage(salir);
 		shell.setMenuBar(menuBar);
 	}
@@ -137,25 +135,25 @@ public class SWTBrowser {
 		// Button Back para volver un paso atrás
 		Button buttonBack = new Button(composite, SWT.ICON);
 		Image back = new Image(display,
-				SWTBrowser.class.getResourceAsStream("arrowhead7.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/arrowhead7.png"));
 		buttonBack.setImage(back);
 
 		// Button Forward para ir hacia delante
 		Button buttonForward = new Button(composite, SWT.ICON);
 		Image forward = new Image(display,
-				SWTBrowser.class.getResourceAsStream("arrow487.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/arrow487.png"));
 		buttonForward.setImage(forward);
 
 		// Button para recargar la página web
 		Button buttonReload = new Button(composite, SWT.ICON);
 		Image reload = new Image(display,
-				SWTBrowser.class.getResourceAsStream("arrows64.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/arrows64.png"));
 		buttonReload.setImage(reload);
 
 		// Button para volver a nuestro Home
 		Button buttonHome = new Button(composite, SWT.ICON);
 		Image home = new Image(display,
-				SWTBrowser.class.getResourceAsStream("home168.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/home168.png"));
 		buttonHome.setImage(home);
 
 		// Text para indicar a la página que está seleccionada mediante las
@@ -167,13 +165,13 @@ public class SWTBrowser {
 		// Button para parar el cargado de la Página
 		Button buttonStop = new Button(composite, SWT.ICON);
 		Image stop = new Image(display,
-				SWTBrowser.class.getResourceAsStream("delete30.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/delete30.png"));
 		buttonStop.setImage(stop);
 
 		// Button para hacertar el formulario de búsqueda del navegador
 		Button buttonGo = new Button(composite, SWT.ICON);
 		Image go = new Image(display,
-				SWTBrowser.class.getResourceAsStream("right39.png"));
+				SWTBrowser.class.getResourceAsStream("iconos/right39.png"));
 		buttonGo.setImage(go);
 
 		buttonBack.addSelectionListener(new SelectionAdapter() {

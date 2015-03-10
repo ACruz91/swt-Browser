@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
-
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 
@@ -25,7 +24,7 @@ public class Html {
 			fw = new FileWriter(ficheroHtml);
 			pw = new PrintWriter(fw);
 			obj.leer(fichero);
-			pw.println("<html>\n\t<head>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>\n\t\t\t Matriz cargada en "
+			pw.println("<html>\n\t<head>\n<link rel=\"stylesheet\" href=\"base.css\">\n<script type=\"text/javascript\" src=\"prueba.js\"></script>\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>\n\t\t\t Matriz cargada en "
 					+ ficheroHtml + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
 				pw.println("\t\t\t\t<tr>");
@@ -34,6 +33,7 @@ public class Html {
 				}
 				pw.println("\t\t\t\t</tr>\n");
 			}
+
 			pw.println("\t\t\t</table></center>");
 			pw.println("\t\t<h2> Estadísticas </h2>");
 			pw.println("\t\t\t<ul>");
@@ -70,7 +70,7 @@ public class Html {
 			fw = new FileWriter(fichero);
 			pw = new PrintWriter(fw);
 			obj.crear(nFilas, nColumnas);
-			pw.println("<html>\n\t<head>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>\n\t\t\t Matriz cargada en "
+			pw.println("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" href=\"base.css\">\n\t\t<script src=\"prueba.js\"></script>\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "
 					+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
 				pw.println("\t\t\t\t<tr>");
@@ -91,6 +91,7 @@ public class Html {
 			pw.println("\t\t\t\t<li> <h3> Número Columnas: " + obj.getFilas()
 					+ "</h3>");
 			pw.println("\t\t\t</ul>");
+			pw.println("\t\t\t<center><button onclick=\"saludo()\"</center>Click</button>");
 			pw.println("\t</body>\n</html>");
 
 		} catch (Exception e) {
