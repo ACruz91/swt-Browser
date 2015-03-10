@@ -2,6 +2,8 @@ package browser;
 
 import java.util.ArrayList;
 
+import matriz.Matriz;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.custom.CTabFolder;
@@ -17,6 +19,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.MessageBox;
@@ -29,12 +32,12 @@ public class SWTBrowser {
 	private Menu menuBar, menuMenuArchivo, menuMenuEditar;
 	private MenuItem menuButtonArchivo, menuButtonEditar,
 	menuButtonNuevaPestaña, menuButtonSalir, menuButtonAbrir,
-	menuButtonNuevo;
+	menuButtonNuevo, menuButtonNuevaMatriz, menuButtonAbrirMatriz,
+	menuButtonGuardarMatriz;
 
 	public void MenuButton(Shell shell, Display display) {
 		// Creación del Menú
 		menuBar = new Menu(shell, SWT.BAR);
-
 		// Creación de la Cabecera del menuBar, Menu que es un icono
 		menuButtonArchivo = new MenuItem(menuBar, SWT.CASCADE);
 		menuButtonArchivo.setText("Archivo");
@@ -59,7 +62,6 @@ public class SWTBrowser {
 		menuButtonNuevaPestaña.setImage(nuevaPestaña);
 
 		// Separador
-		// Create the first separator
 		new MenuItem(menuMenuArchivo, SWT.SEPARATOR);
 
 		// Creación de un Item del Menú, Nuevo
@@ -80,6 +82,33 @@ public class SWTBrowser {
 
 		// Separador
 		// Create the first separator
+		new MenuItem(menuMenuArchivo, SWT.SEPARATOR);
+
+		// Creación de un Item del Menú, Nueva Matriz
+		menuButtonNuevaMatriz = new MenuItem(menuMenuArchivo, SWT.PUSH);
+		menuButtonNuevaMatriz.setText("&Nueva Matriz\t CTRL+M");
+		menuButtonNuevaMatriz.setAccelerator(SWT.CTRL + 'M');
+		Image nuevaMatriz = new Image(display,
+				"C:/Users/Alberto/workspace/iconos/folder228.png");
+		menuButtonNuevaMatriz.setImage(nuevaMatriz);
+
+		// Creación de un Item del Menú, Abrir Matriz
+		menuButtonAbrirMatriz = new MenuItem(menuMenuArchivo, SWT.PUSH);
+		menuButtonAbrirMatriz.setText("&Abrir Matriz\t CTRL+A");
+		menuButtonAbrirMatriz.setAccelerator(SWT.CTRL + 'A');
+		Image abrirMatriz = new Image(display,
+				"C:/Users/Alberto/workspace/iconos/folder243.png");
+		menuButtonAbrirMatriz.setImage(abrirMatriz);
+
+		// Creación de un Item del Menú, Guardar Matriz
+		menuButtonGuardarMatriz = new MenuItem(menuMenuArchivo, SWT.PUSH);
+		menuButtonGuardarMatriz.setText("&Guardar Matriz\t CTRL+G");
+		menuButtonGuardarMatriz.setAccelerator(SWT.CTRL + 'G');
+		Image guardarMatriz = new Image(display,
+				"C:/Users/Alberto/workspace/iconos/save23.png");
+		menuButtonGuardarMatriz.setImage(guardarMatriz);
+
+		// Separador
 		new MenuItem(menuMenuArchivo, SWT.SEPARATOR);
 
 		// Creación de un Item del Menú, Salir
@@ -228,6 +257,7 @@ public class SWTBrowser {
 		class abrir implements SelectionListener {
 			public void widgetSelected(SelectionEvent event) {
 				// Creación de un Dialogo para Abrir documentos
+				Html objHtml = new Html();
 				FileDialog fd = new FileDialog(shell, SWT.OPEN | SWT.CLOSE);
 				fd.setFilterPath("C:/");
 				String[] filterExt = { "*.html", "*.htm", "*.*" };
@@ -236,16 +266,7 @@ public class SWTBrowser {
 
 				// Si Existe el Fichero
 				if (fichero != null) {
-					int tamaño = folder.getItems().length - 1;
-					folder.getItem(tamaño).setText("Nueva Pestaña");
-					arrayListBrowser.add(new Browser(folder, SWT.NONE));
-					arrayListBrowser.get(arrayListBrowser.size() - 1);
-					folder.getItem(tamaño).setControl(
-							arrayListBrowser.get(arrayListBrowser.size() - 1));
-					arrayListBrowser.get(arrayListBrowser.size() - 1);
-					folder.showItem(folder.getItem(tamaño));
-					CTabItem itemCrear = new CTabItem(folder, SWT.CLOSE);
-					itemCrear.setText("       ");
+					objHtml.leerHtml(fichero, arrayListBrowser, folder);
 				}
 			}
 
@@ -337,11 +358,163 @@ public class SWTBrowser {
 			public void widgetDefaultSelected(SelectionEvent event) {
 			}
 		}
+
+		class nuevaMatriz implements SelectionListener {
+			public void widgetSelected(SelectionEvent event) {
+				// Creación de una Shell hija llamada "nuevo" para el nuevo
+				// dialogo
+				Shell nuevo = new Shell(shell, SWT.DIALOG_TRIM);
+
+				// Características de la Ventana "Nuevo"
+				nuevo.setSize(300, 120);
+				nuevo.setText("Nuevo");
+
+				// Layout de la Ventana
+				nuevo.setLayout(new GridLayout(3, true));
+				GridData gridData = new GridData(GridData.CENTER);
+				gridData.horizontalSpan = 2;
+
+				// Creación del Label y Text para pedir las nFilas
+				Label labelFilas = new Label(nuevo, SWT.LEFT);
+				labelFilas.setText("Introduzca el número de Filas: ");
+				Text textFilas = new Text(nuevo, SWT.SINGLE | SWT.BORDER);
+				textFilas.setLayoutData(gridData);
+				textFilas.computeSize(5, 5);
+
+				// Creación del Label y Text para pedir las nColumnas
+				Label labelColumnas = new Label(nuevo, SWT.LEFT);
+				labelColumnas.setText("Introduzca el número de Columnas: ");
+				Text textColumnas = new Text(nuevo, SWT.SINGLE | SWT.BORDER);
+				textColumnas.setLayoutData(gridData);
+
+				// Creación de Button para aceptar nFilas y nColumnas
+				Button buttonAceptar = new Button(nuevo, SWT.PUSH);
+				buttonAceptar.setText("Aceptar");
+				buttonAceptar.addSelectionListener(new SelectionListener() {
+					public void widgetSelected(SelectionEvent event) {
+						Matriz objMatriz = new Matriz();
+						Html objHtml = new Html();
+						// Obtenemos nFilas y nColumnas de los Text y creamos la
+						// Matriz
+						objMatriz.setFilas(Integer.parseInt(textFilas.getText()));
+						objMatriz.setColumnas(Integer.parseInt(textColumnas.getText()));
+
+						// Valores por Defecto en caso de 0 o menos
+						if (objMatriz.getFilas() <= 0) {
+							objMatriz.setFilas(1);
+						}
+						if (objMatriz.getColumnas() <= 0) {
+							objMatriz.setColumnas(1);
+						}
+						
+						// Pedimos al usuario donde le gustaría guardar el Fichero
+						FileDialog fd = new FileDialog(shell, SWT.OPEN | SWT.CLOSE);
+						fd.setFilterPath("C:/");
+						String[] filterExt = { "*.html", "*.*" };
+						fd.setFilterExtensions(filterExt);
+						String fichero = fd.open();
+	
+						// Si Existe el Fichero
+						if (fichero != null) {
+							objHtml.escribirHtmlCrear(fichero, objMatriz.getFilas(), objMatriz.getColumnas());
+							objHtml.leerHtml(fichero, arrayListBrowser, folder);
+						}
+
+						nuevo.close();
+					}
+
+					public void widgetDefaultSelected(SelectionEvent event) {
+					}
+				});
+
+				// Creación de Button para cancelar nFilas y nColumnas
+				Button buttonCancelar = new Button(nuevo, SWT.PUSH);
+				buttonCancelar.setText("Cancelar");
+				buttonCancelar.pack();
+				buttonCancelar.addSelectionListener(new SelectionListener() {
+					public void widgetSelected(SelectionEvent event) {
+						nuevo.close();
+					}
+
+					public void widgetDefaultSelected(SelectionEvent event) {
+
+					}
+				});
+
+				nuevo.open();
+			}
+
+			public void widgetDefaultSelected(SelectionEvent event) {
+			}
+		}
+
+		class abrirMatriz implements SelectionListener {
+			public void widgetSelected(SelectionEvent event) {
+				// Creación de un Dialogo para Abrir documentos
+				Html objHtml = new Html();
+				FileDialog fd = new FileDialog(shell, SWT.OPEN | SWT.CLOSE);
+				fd.setFilterPath("C:/");
+				String[] filterExt = { "*.txt", "*.*" };
+				fd.setFilterExtensions(filterExt);
+				String fichero = fd.open();
+
+				// Si Existe el Fichero
+				if (fichero != null) {
+					// Este proceso es para quitarle la extensión al nombre y
+					// ponerle la extensión html
+					String resultado = "";
+					String ficheroHtml = null;
+					for (int i = 0; i < fichero.length() - 4; ++i) {
+						resultado += fichero.charAt(i);
+					}
+
+					ficheroHtml = resultado.concat(".html");
+					// Creamos el archivo.html y luego leemos para poder meterlo
+					// en un Browser
+					objHtml.escribirHtmlAbrir(fichero, ficheroHtml);
+					objHtml.leerHtml(ficheroHtml, arrayListBrowser, folder);
+				}
+			}
+
+			public void widgetDefaultSelected(SelectionEvent event) {
+			}
+		}
+
+		class guardarMatriz implements SelectionListener {
+			public void widgetSelected(SelectionEvent event) {
+				// Creación de un Dialogo para Abrir documentos
+				FileDialog fd = new FileDialog(shell, SWT.OPEN | SWT.CLOSE);
+				fd.setFilterPath("C:/");
+				String[] filterExt = { "*.html", "*.htm", "*.*" };
+				fd.setFilterExtensions(filterExt);
+				String fichero = fd.open();
+
+				// Si Existe el Fichero
+				if (fichero != null) {
+					int tamaño = folder.getItems().length - 1;
+					folder.getItem(tamaño).setText("Nueva Pestaña");
+					arrayListBrowser.add(new Browser(folder, SWT.NONE));
+					arrayListBrowser.get(arrayListBrowser.size() - 1);
+					folder.getItem(tamaño).setControl(
+							arrayListBrowser.get(arrayListBrowser.size() - 1));
+					arrayListBrowser.get(arrayListBrowser.size() - 1);
+					folder.showItem(folder.getItem(tamaño));
+					CTabItem itemCrear = new CTabItem(folder, SWT.CLOSE);
+					itemCrear.setText("       ");
+				}
+			}
+
+			public void widgetDefaultSelected(SelectionEvent event) {
+			}
+		}
 		// Asignación de Funciones de menuArchivo
 		menuButtonNuevo.addSelectionListener(new nuevo());
 		menuButtonAbrir.addSelectionListener(new abrir());
 		menuButtonSalir.addSelectionListener(new salir());
 		menuButtonNuevaPestaña.addSelectionListener(new nuevaPestaña());
+		menuButtonNuevaMatriz.addSelectionListener(new nuevaMatriz());
+		menuButtonAbrirMatriz.addSelectionListener(new abrirMatriz());
+		menuButtonGuardarMatriz.addSelectionListener(new guardarMatriz());
 
 	}
 
