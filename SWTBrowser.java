@@ -397,7 +397,8 @@ public class SWTBrowser {
 						// Obtenemos nFilas y nColumnas de los Text y creamos la
 						// Matriz
 						objMatriz.setFilas(Integer.parseInt(textFilas.getText()));
-						objMatriz.setColumnas(Integer.parseInt(textColumnas.getText()));
+						objMatriz.setColumnas(Integer.parseInt(textColumnas
+								.getText()));
 
 						// Valores por Defecto en caso de 0 o menos
 						if (objMatriz.getFilas() <= 0) {
@@ -406,17 +407,21 @@ public class SWTBrowser {
 						if (objMatriz.getColumnas() <= 0) {
 							objMatriz.setColumnas(1);
 						}
-						
-						// Pedimos al usuario donde le gustaría guardar el Fichero
-						FileDialog fd = new FileDialog(shell, SWT.OPEN | SWT.CLOSE);
+
+						// Pedimos al usuario donde le gustaría guardar el
+						// Fichero
+						FileDialog fd = new FileDialog(shell, SWT.OPEN
+								| SWT.CLOSE);
 						fd.setFilterPath("C:/");
 						String[] filterExt = { "*.html", "*.*" };
 						fd.setFilterExtensions(filterExt);
 						String fichero = fd.open();
-	
+
 						// Si Existe el Fichero
 						if (fichero != null) {
-							objHtml.escribirHtmlCrear(fichero, objMatriz.getFilas(), objMatriz.getColumnas());
+							objHtml.escribirHtmlCrear(fichero,
+									objMatriz.getFilas(),
+									objMatriz.getColumnas());
 							objHtml.leerHtml(fichero, arrayListBrowser, folder);
 						}
 

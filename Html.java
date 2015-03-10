@@ -25,7 +25,8 @@ public class Html {
 			fw = new FileWriter(ficheroHtml);
 			pw = new PrintWriter(fw);
 			obj.leer(fichero);
-			pw.println("<html>\n\t<head>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>\n\t\t\t Matriz cargada en " + ficheroHtml + "</h1>\n\t\t\t<center><table>\t\t\t\t");
+			pw.println("<html>\n\t<head>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>\n\t\t\t Matriz cargada en "
+					+ ficheroHtml + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
 				pw.println("\t\t\t\t<tr>");
 				for (int j = 0; j < obj.getFilas(); j++) {
@@ -33,13 +34,17 @@ public class Html {
 				}
 				pw.println("\t\t\t\t</tr>\n");
 			}
-			pw.println("\t\t\t</table></center>");			
+			pw.println("\t\t\t</table></center>");
 			pw.println("\t\t<h2> Estadísticas </h2>");
 			pw.println("\t\t\t<ul>");
-			pw.println("\t\t\t\t<li> <h3> Número Máximo: " + obj.getMaximo() + "</h3>");
-			pw.println("\t\t\t\t<li> <h3> Número Mínimo: " + obj.getMinimo() + "</h3>");
-			pw.println("\t\t\t\t<li> <h3> Número Filas: " + obj.getFilas() + "</h3>");
-			pw.println("\t\t\t\t<li> <h3> Número Columnas: " + obj.getFilas() + "</h3>");	
+			pw.println("\t\t\t\t<li> <h3> Número Máximo: " + obj.getMaximo()
+					+ "</h3>");
+			pw.println("\t\t\t\t<li> <h3> Número Mínimo: " + obj.getMinimo()
+					+ "</h3>");
+			pw.println("\t\t\t\t<li> <h3> Número Filas: " + obj.getFilas()
+					+ "</h3>");
+			pw.println("\t\t\t\t<li> <h3> Número Columnas: " + obj.getFilas()
+					+ "</h3>");
 			pw.println("\t\t\t</ul>");
 			pw.println("\t</body>\n</html>");
 
@@ -65,7 +70,8 @@ public class Html {
 			fw = new FileWriter(fichero);
 			pw = new PrintWriter(fw);
 			obj.crear(nFilas, nColumnas);
-			pw.println("<html>\n\t<head>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>\n\t\t\t Matriz cargada en " + fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
+			pw.println("<html>\n\t<head>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>\n\t\t\t Matriz cargada en "
+					+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
 				pw.println("\t\t\t\t<tr>");
 				for (int j = 0; j < obj.getFilas(); j++) {
@@ -73,13 +79,17 @@ public class Html {
 				}
 				pw.println("\t\t\t\t</tr>\n");
 			}
-			pw.println("\t\t\t</table></center>");			
+			pw.println("\t\t\t</table></center>");
 			pw.println("\t\t<h2> Estadísticas </h2>");
 			pw.println("\t\t\t<ul>");
-			pw.println("\t\t\t\t<li> <h3> Número Máximo: " + obj.getMaximo() + "</h3>");
-			pw.println("\t\t\t\t<li> <h3> Número Mínimo: " + obj.getMinimo() + "</h3>");
-			pw.println("\t\t\t\t<li> <h3> Número Filas: " + obj.getFilas() + "</h3>");
-			pw.println("\t\t\t\t<li> <h3> Número Columnas: " + obj.getFilas() + "</h3>");	
+			pw.println("\t\t\t\t<li> <h3> Número Máximo: " + obj.getMaximo()
+					+ "</h3>");
+			pw.println("\t\t\t\t<li> <h3> Número Mínimo: " + obj.getMinimo()
+					+ "</h3>");
+			pw.println("\t\t\t\t<li> <h3> Número Filas: " + obj.getFilas()
+					+ "</h3>");
+			pw.println("\t\t\t\t<li> <h3> Número Columnas: " + obj.getFilas()
+					+ "</h3>");
 			pw.println("\t\t\t</ul>");
 			pw.println("\t</body>\n</html>");
 
@@ -95,6 +105,7 @@ public class Html {
 		}
 
 	}
+
 	public void leerHtml(String fichero, ArrayList<Browser> arrayListBrowser,
 			CTabFolder folder) {
 		File archivo = null;
