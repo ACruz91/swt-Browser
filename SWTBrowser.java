@@ -117,11 +117,11 @@ public class SWTBrowser {
 		Image salir = new Image(display,
 				SWTBrowser.class.getResourceAsStream("iconos/door13.png"));
 		menuButtonSalir.setImage(salir);
-		
+
 		// Creación de un Item del Menú, Salir
 		menuButtonNuevoHTMLLocal = new MenuItem(menuMenuArchivo, SWT.PUSH);
 		menuButtonNuevoHTMLLocal.setText("&Nuevo HTML Local\t CTRL+L");
-		menuButtonNuevoHTMLLocal.setAccelerator(SWT.CTRL+ 'L');
+		menuButtonNuevoHTMLLocal.setAccelerator(SWT.CTRL + 'L');
 		shell.setMenuBar(menuBar);
 	}
 
@@ -257,7 +257,7 @@ public class SWTBrowser {
 			public void widgetDefaultSelected(SelectionEvent event) {
 			}
 		}
-		
+
 		class nuevoHTMLLocal implements SelectionListener {
 			public void widgetSelected(SelectionEvent event) {
 				Html objHtml = new Html();

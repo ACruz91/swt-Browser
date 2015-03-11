@@ -25,9 +25,11 @@ public class Html {
 			pw = new PrintWriter(fw);
 			obj.leer(fichero);
 			pw.println("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
-					+ SWTBrowser.class.getResource("base.css")
+					+ SWTBrowser.class.getClass().getResource("archivos/base.css")
 					+ "\">\n\t\t<script src=\" "
-					+ SWTBrowser.class.getResource("prueba.js") + "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
+					+ SWTBrowser.class.getResource("archivos/prueba.js")
+					+ "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "
+					+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
 				pw.println("\t\t\t\t<tr>");
 				for (int j = 0; j < obj.getFilas(); j++) {
@@ -73,9 +75,11 @@ public class Html {
 			pw = new PrintWriter(fw);
 			obj.crear(nFilas, nColumnas);
 			pw.println("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
-					+ SWTBrowser.class.getResource("base.css")
+					+ SWTBrowser.class.getResource("archivos/base.css")
 					+ "\">\n\t\t<script src=\" "
-					+ SWTBrowser.class.getResource("prueba.js") + "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
+					+ SWTBrowser.class.getResource("archivos/prueba.js")
+					+ "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "
+					+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
 				pw.println("\t\t\t\t<tr>");
 				for (int j = 0; j < obj.getFilas(); j++) {
@@ -136,7 +140,7 @@ public class Html {
 			}
 			// La cadena leida se muestra en el Browser
 			arrayListBrowser.get(arrayListBrowser.size() - 1)
-					.setText(resultado);
+			.setText(resultado);
 			folder.getItem(tamaño).setControl(
 					arrayListBrowser.get(arrayListBrowser.size() - 1));
 			arrayListBrowser.get(arrayListBrowser.size() - 1);
@@ -171,9 +175,9 @@ public class Html {
 		int tamaño = folder.getItems().length - 1;
 		folder.getItem(tamaño).setText("HTML Local");
 		html += ("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
-				+ SWTBrowser.class.getResource("base.css")
+				+ SWTBrowser.class.getResource("archivos/base.css")
 				+ "\">\n\t\t<script src=\" "
-				+ SWTBrowser.class.getResource("prueba.js") + "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en Local</h1>\n\t\t\t<center><table>\t\t\t\t");
+				+ SWTBrowser.class.getResource("archivos/prueba.js") + "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en Local</h1>\n\t\t\t<center><table>\t\t\t\t");
 		for (int i = 0; i < obj.getColumnas(); i++) {
 			html += ("\t\t\t\t<tr>");
 			for (int j = 0; j < obj.getFilas(); j++) {
