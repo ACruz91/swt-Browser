@@ -24,8 +24,10 @@ public class Html {
 			fw = new FileWriter(ficheroHtml);
 			pw = new PrintWriter(fw);
 			obj.leer(fichero);
-			pw.println("<html>\n\t<head>\n<link rel=\"stylesheet\" href=\"base.css\">\n<script type=\"text/javascript\" src=\"prueba.js\"></script>\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>\n\t\t\t Matriz cargada en "
-					+ ficheroHtml + "</h1>\n\t\t\t<center><table>\t\t\t\t");
+			pw.println("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
+					+ SWTBrowser.class.getResource("base.css").getPath()
+					+ "\">\n\t\t<script src=\" "
+					+ SWTBrowser.class.getResource("prueba.js").getPath() + "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
 				pw.println("\t\t\t\t<tr>");
 				for (int j = 0; j < obj.getFilas(); j++) {
@@ -70,8 +72,10 @@ public class Html {
 			fw = new FileWriter(fichero);
 			pw = new PrintWriter(fw);
 			obj.crear(nFilas, nColumnas);
-			pw.println("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" href=\"base.css\">\n\t\t<script src=\"prueba.js\"></script>\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "
-					+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
+			pw.println("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
+					+ SWTBrowser.class.getResource("base.css").getPath()
+					+ "\">\n\t\t<script src=\" "
+					+ SWTBrowser.class.getResource("prueba.js").getPath() + "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
 				pw.println("\t\t\t\t<tr>");
 				for (int j = 0; j < obj.getFilas(); j++) {
@@ -132,7 +136,7 @@ public class Html {
 			}
 			// La cadena leida se muestra en el Browser
 			arrayListBrowser.get(arrayListBrowser.size() - 1)
-			.setText(resultado);
+					.setText(resultado);
 			folder.getItem(tamaño).setControl(
 					arrayListBrowser.get(arrayListBrowser.size() - 1));
 			arrayListBrowser.get(arrayListBrowser.size() - 1);
@@ -153,6 +157,51 @@ public class Html {
 				e2.printStackTrace();
 			}
 		}
+
+	}
+
+	public void escribirHtmlEjemplo(ArrayList<Browser> arrayListBrowser,
+			CTabFolder folder) {
+		String html = "";
+		Matriz obj = new Matriz();
+
+		obj.crear(3, 3);
+		// Añadimos un nuevo Browser a nuestra Array
+		arrayListBrowser.add(new Browser(folder, SWT.NONE));
+		int tamaño = folder.getItems().length - 1;
+		folder.getItem(tamaño).setText("HTML Local");
+		html += ("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
+				+ SWTBrowser.class.getResource("base.css").getPath()
+				+ "\">\n\t\t<script src=\" "
+				+ SWTBrowser.class.getResource("prueba.js").getPath() + "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en Local</h1>\n\t\t\t<center><table>\t\t\t\t");
+		for (int i = 0; i < obj.getColumnas(); i++) {
+			html += ("\t\t\t\t<tr>");
+			for (int j = 0; j < obj.getFilas(); j++) {
+				html += ("\t\t\t\t<td>" + obj.getMatriz(j, i) + "</td>");
+			}
+			html += ("\t\t\t\t</tr>\n");
+		}
+
+		html += ("\t\t\t</table></center>");
+		html += ("\t\t<h2> Estadísticas </h2>");
+		html += ("\t\t\t<ul>");
+		html += ("\t\t\t\t<li> <h3> Número Máximo: " + obj.getMaximo() + "</h3>");
+		html += ("\t\t\t\t<li> <h3> Número Mínimo: " + obj.getMinimo() + "</h3>");
+		html += ("\t\t\t\t<li> <h3> Número Filas: " + obj.getFilas() + "</h3>");
+		html += ("\t\t\t\t<li> <h3> Número Columnas: " + obj.getFilas() + "</h3>");
+		html += ("\t\t\t</ul>");
+		html += ("\t\t\t<center><button onclick=\"saludo()\"</center>Click</button>");
+		html += ("\t</body>\n</html>");
+
+		// La cadena leida se muestra en el Browser
+		arrayListBrowser.get(arrayListBrowser.size() - 1).setText(html);
+		folder.getItem(tamaño).setControl(
+				arrayListBrowser.get(arrayListBrowser.size() - 1));
+		arrayListBrowser.get(arrayListBrowser.size() - 1);
+		// Creamos una nueva pestaña
+		folder.showItem(folder.getItem(tamaño));
+		CTabItem itemCrear = new CTabItem(folder, SWT.CLOSE);
+		itemCrear.setText("       ");
 
 	}
 }

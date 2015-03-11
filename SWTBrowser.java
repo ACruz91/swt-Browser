@@ -33,7 +33,7 @@ public class SWTBrowser {
 	private MenuItem menuButtonArchivo, menuButtonEditar,
 	menuButtonNuevaPestaña, menuButtonSalir, menuButtonAbrir,
 	menuButtonNuevo, menuButtonNuevaMatriz, menuButtonAbrirMatriz,
-	menuButtonGuardarMatriz;
+	menuButtonGuardarMatriz, menuButtonNuevoHTMLLocal;
 
 	public void MenuButton(Shell shell, Display display) {
 		// Creación del Menú
@@ -117,6 +117,11 @@ public class SWTBrowser {
 		Image salir = new Image(display,
 				SWTBrowser.class.getResourceAsStream("iconos/door13.png"));
 		menuButtonSalir.setImage(salir);
+		
+		// Creación de un Item del Menú, Salir
+		menuButtonNuevoHTMLLocal = new MenuItem(menuMenuArchivo, SWT.PUSH);
+		menuButtonNuevoHTMLLocal.setText("&Nuevo HTML Local\t CTRL+L");
+		menuButtonNuevoHTMLLocal.setAccelerator(SWT.CTRL+ 'L');
 		shell.setMenuBar(menuBar);
 	}
 
@@ -252,7 +257,17 @@ public class SWTBrowser {
 			public void widgetDefaultSelected(SelectionEvent event) {
 			}
 		}
+		
+		class nuevoHTMLLocal implements SelectionListener {
+			public void widgetSelected(SelectionEvent event) {
+				Html objHtml = new Html();
+				objHtml.escribirHtmlEjemplo(arrayListBrowser, folder);
 
+			}
+
+			public void widgetDefaultSelected(SelectionEvent event) {
+			}
+		}
 		class abrir implements SelectionListener {
 			public void widgetSelected(SelectionEvent event) {
 				// Creación de un Dialogo para Abrir documentos
@@ -515,6 +530,7 @@ public class SWTBrowser {
 		menuButtonNuevo.addSelectionListener(new nuevo());
 		menuButtonAbrir.addSelectionListener(new abrir());
 		menuButtonSalir.addSelectionListener(new salir());
+		menuButtonNuevoHTMLLocal.addSelectionListener(new nuevoHTMLLocal());
 		menuButtonNuevaPestaña.addSelectionListener(new nuevaPestaña());
 		menuButtonNuevaMatriz.addSelectionListener(new nuevaMatriz());
 		menuButtonAbrirMatriz.addSelectionListener(new abrirMatriz());
