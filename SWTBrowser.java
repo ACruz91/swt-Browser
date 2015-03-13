@@ -63,6 +63,17 @@ public class SWTBrowser {
 
 		// Separador
 		new MenuItem(menuMenuArchivo, SWT.SEPARATOR);
+		
+		// Creación de un Item del Menú, para crear una HTML Local
+		menuButtonNuevoHTMLLocal = new MenuItem(menuMenuArchivo, SWT.PUSH);
+		menuButtonNuevoHTMLLocal.setText("&Nuevo HTML Local\t CTRL+L");
+		menuButtonNuevoHTMLLocal.setAccelerator(SWT.CTRL + 'L');
+		Image nuevoHTMLLocal = new Image(display,
+				SWTBrowser.class.getResourceAsStream("iconos/html8.png"));
+		menuButtonNuevoHTMLLocal.setImage(nuevoHTMLLocal);
+		
+		// Separador
+		new MenuItem(menuMenuArchivo, SWT.SEPARATOR);
 
 		// Creación de un Item del Menú, Nuevo
 		menuButtonNuevo = new MenuItem(menuMenuArchivo, SWT.PUSH);
@@ -118,10 +129,7 @@ public class SWTBrowser {
 				SWTBrowser.class.getResourceAsStream("iconos/door13.png"));
 		menuButtonSalir.setImage(salir);
 
-		// Creación de un Item del Menú, Salir
-		menuButtonNuevoHTMLLocal = new MenuItem(menuMenuArchivo, SWT.PUSH);
-		menuButtonNuevoHTMLLocal.setText("&Nuevo HTML Local\t CTRL+L");
-		menuButtonNuevoHTMLLocal.setAccelerator(SWT.CTRL + 'L');
+
 		shell.setMenuBar(menuBar);
 	}
 
@@ -570,7 +578,7 @@ public class SWTBrowser {
 				}
 			}
 		});
-
+		
 	}
 
 	public void Ventana() {
