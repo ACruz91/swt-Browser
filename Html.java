@@ -174,10 +174,7 @@ public class Html {
 		arrayListBrowser.add(new Browser(folder, SWT.NONE));
 		int tamaño = folder.getItems().length - 1;
 		folder.getItem(tamaño).setText("HTML Local");
-		html += ("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
-				+ SWTBrowser.class.getResource("archivos/base.css")
-				+ "\">\n\t\t<script src=\" "
-				+ SWTBrowser.class.getResource("archivos/prueba.js") + "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en Local</h1>\n\t\t\t<center><table>\t\t\t\t");
+		html += ("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\" archivos/base.css\">\n\t\t<script src=\" archivos/prueba.js \"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en Local</h1>\n\t\t\t<center><table>\t\t\t\t");
 		for (int i = 0; i < obj.getColumnas(); i++) {
 			html += ("\t\t\t\t<tr>");
 			for (int j = 0; j < obj.getFilas(); j++) {
@@ -190,8 +187,7 @@ public class Html {
 		html += ("\t\t<h2> Paginas Web </h2>");
 		html += ("\t\t\t<ul>");
 		html += ("\t\t\t\t<li> <h3> Web:  <a href=\"https://github.com/ACruz91\">GitHub</a> </h3>");
-		html += ("\t\t\t\t<li> <h3> Local:  <a href=\"" + SWTBrowser.class.getResource("archivos/prueba.html") + "\">Página Local</a> </h3>");
-		html += ("\t\t\t\t<li> <h3> Local:  <a href=\"browser/archivos/prueba.html\">Página Local</a> </h3>");
+		html += ("\t\t\t\t<li> <h3> Local:  <a href=\"archivos/prueba.html\">Página Local</a> </h3>");
 		html += ("\t\t\t</ul>");
 		html += ("\t\t<h2> Estadísticas </h2>");
 		html += ("\t\t\t<ul>");
