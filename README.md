@@ -12,3 +12,4 @@ Opciones con Matrices
 
 Nota:
 - Para poder utilizar este Navegador se debe de importar el antiguo proyecto realizado con la interfaz swt.
+- Para poder utilizar los archivos css y JavaScript se debe de descargar la carpeta "archivos"
