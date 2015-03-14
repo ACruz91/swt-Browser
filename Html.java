@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.eclipse.swt.SWT;
@@ -19,15 +21,21 @@ public class Html {
 		Matriz obj = new Matriz();
 		FileWriter fw = null;
 		PrintWriter pw = null;
+
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+
 		try {
 			// Escritura del Fichero
 			fw = new FileWriter(ficheroHtml);
 			pw = new PrintWriter(fw);
 			obj.leer(fichero);
 			pw.println("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
-					+ SWTBrowser.class.getClass().getResource("archivos/base.css")
+					+ s
+					+ "/archivos/base.css"
 					+ "\">\n\t\t<script src=\" "
-					+ SWTBrowser.class.getResource("archivos/prueba.js")
+					+ s
+					+ "/archivos/prueba.js"
 					+ "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "
 					+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
@@ -69,15 +77,21 @@ public class Html {
 		Matriz obj = new Matriz();
 		FileWriter fw = null;
 		PrintWriter pw = null;
+
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+
 		try {
 			// Escritura del Fichero
 			fw = new FileWriter(fichero);
 			pw = new PrintWriter(fw);
 			obj.crear(nFilas, nColumnas);
 			pw.println("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\""
-					+ SWTBrowser.class.getResource("archivos/base.css")
+					+ s
+					+ "/archivos/base.css"
 					+ "\">\n\t\t<script src=\" "
-					+ SWTBrowser.class.getResource("archivos/prueba.js")
+					+ s
+					+ "/archivos/prueba.js"
 					+ "\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en "
 					+ fichero + "</h1>\n\t\t\t<center><table>\t\t\t\t");
 			for (int i = 0; i < obj.getColumnas(); i++) {
@@ -169,12 +183,17 @@ public class Html {
 		String html = "";
 		Matriz obj = new Matriz();
 
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+
 		obj.crear(3, 3);
 		// Añadimos un nuevo Browser a nuestra Array
 		arrayListBrowser.add(new Browser(folder, SWT.NONE));
 		int tamaño = folder.getItems().length - 1;
+
 		folder.getItem(tamaño).setText("HTML Local");
-		html += ("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\" archivos/base.css\">\n\t\t<script src=\" archivos/prueba.js \"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en Local</h1>\n\t\t\t<center><table>\t\t\t\t");
+		html += ("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\" "
+				+ s + "/archivos/base.css\">\n\t\t<script src=\" " + s + "/archivos/prueba.js\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en Local</h1>\n\t\t\t<center><table>\t\t\t\t");
 		for (int i = 0; i < obj.getColumnas(); i++) {
 			html += ("\t\t\t\t<tr>");
 			for (int j = 0; j < obj.getFilas(); j++) {
@@ -187,7 +206,7 @@ public class Html {
 		html += ("\t\t<h2> Paginas Web </h2>");
 		html += ("\t\t\t<ul>");
 		html += ("\t\t\t\t<li> <h3> Web:  <a href=\"https://github.com/ACruz91\">GitHub</a> </h3>");
-		html += ("\t\t\t\t<li> <h3> Local:  <a href=\"archivos/prueba.html\">Página Local</a> </h3>");
+		html += ("\t\t\t\t<li> <h3> Local:  <a href=\" " + s + "/archivos/prueba.html\">Página Local</a> </h3>");
 		html += ("\t\t\t</ul>");
 		html += ("\t\t<h2> Estadísticas </h2>");
 		html += ("\t\t\t<ul>");

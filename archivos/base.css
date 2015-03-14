@@ -1,5 +1,8 @@
 @CHARSET "ISO-8859-1";
 
+. {
+	background-color: #000;
+}
 body {
 	padding-left: 11em;
 	font-family: Georgia, "Times New Roman", Times, serif;
