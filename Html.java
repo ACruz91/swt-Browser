@@ -22,6 +22,8 @@ public class Html {
 		FileWriter fw = null;
 		PrintWriter pw = null;
 
+		// Creación del Path para obtener la Ruta Relativa para instanciar los
+		// archivos externos
 		Path currentRelativePath = Paths.get("");
 		String s = currentRelativePath.toAbsolutePath().toString();
 
@@ -78,6 +80,8 @@ public class Html {
 		FileWriter fw = null;
 		PrintWriter pw = null;
 
+		// Creación del Path para obtener la Ruta Relativa para instanciar los
+		// archivos externos
 		Path currentRelativePath = Paths.get("");
 		String s = currentRelativePath.toAbsolutePath().toString();
 
@@ -154,7 +158,7 @@ public class Html {
 			}
 			// La cadena leida se muestra en el Browser
 			arrayListBrowser.get(arrayListBrowser.size() - 1)
-			.setText(resultado);
+					.setText(resultado);
 			folder.getItem(tamaño).setControl(
 					arrayListBrowser.get(arrayListBrowser.size() - 1));
 			arrayListBrowser.get(arrayListBrowser.size() - 1);
@@ -182,16 +186,23 @@ public class Html {
 			CTabFolder folder) {
 		String html = "";
 		Matriz obj = new Matriz();
-
+		
+		// Creación del Path para obtener la Ruta Relativa para instanciar los
+		// archivos externos
 		Path currentRelativePath = Paths.get("");
 		String s = currentRelativePath.toAbsolutePath().toString();
 
+		//Creamos una Matriz 3x3 de Prueba
 		obj.crear(3, 3);
+		
 		// Añadimos un nuevo Browser a nuestra Array
 		arrayListBrowser.add(new Browser(folder, SWT.NONE));
+		
+		// Ponemos Nombre a nuestra Pestaña 
 		int tamaño = folder.getItems().length - 1;
-
 		folder.getItem(tamaño).setText("HTML Local");
+		
+		// Creación del HTML
 		html += ("<html>\n\t<head>\n\t\t<link rel=\"stylesheet\" type = \"text/css\" href=\" "
 				+ s + "/archivos/base.css\">\n\t\t<script src=\" " + s + "/archivos/prueba.js\"></script>\n\t\t<title>\n\n\t\t</title>\n\t</head>\n\t<body>\n\t\t<h1>Matriz cargada en Local</h1>\n\t\t\t<center><table>\t\t\t\t");
 		for (int i = 0; i < obj.getColumnas(); i++) {
